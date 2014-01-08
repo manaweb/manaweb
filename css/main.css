@@ -1,0 +1,111 @@
+/* ==========================================================================
+	Custom style bootstrap 3.0.0
+   ========================================================================== */
+* {
+	font-family: 'century_gothicregular' !important;
+}
+/* Linha 2081 */
+.btn-primary {
+	background-color: transparent;
+	border: 1px solid white;
+	margin-top: 100px;
+	margin-bottom: 45px;
+}
+/* Linha 2087 */
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: transparent;
+  border-color: white;
+}
+/* Linha 4014 */
+.navbar {
+	background-image: none;
+	background-color: #023363;
+}
+/* Linha 4511 */
+.navbar-inverse .navbar-nav > li > a {
+  color: white;
+}
+/* Linha 4521 */
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+  color: #ffffff;
+  background-color: transparent;
+  font-weight: bold;
+}
+/* ==========================================================================
+   Custom style main stylesheet
+   ========================================================================== */
+.menu-mana {
+	font-size: 16px;
+	margin-top: 20px;
+}
+.sua-empresa {
+	background: url(../img/bg-inicial.png) no-repeat 50% 50%;
+	background-size: cover;
+	color: white;
+}
+.sua-empresa p {
+	font-size: 38px;
+	line-height: 50px;
+}
+.sua-empresa strong {
+	font-size: 45px;
+}
+.jumbospace {
+	margin-top: 120px;
+	margin-bottom: 120px;
+}
+.jumbo-destaque {
+	font-family: Arial,Helvetica,sans-serif !important;
+	font-size: 45px;
+	color: #00FFFF;
+}
+.solucoes-web {
+	margin-top: -25px;
+	color: white;
+	background-color: #185EA2;
+}
+.solucoes-web-bg {
+	background: url(../img/solucoes-web.png) no-repeat top right;
+}
+.solucoes-web h1, .ecossistema h1 {
+	font-weight: bold;
+	font-size: 55px;
+	letter-spacing: -2.5px;
+}
+.solucoes-web h2 {
+	margin-bottom: 60px;
+	font-weight: lighter;
+}
+.solucoes-web p {
+	font-size: 16px;
+}
+.solucoes-web .img-space {margin-right: 15px;}
+.solucoes-conteudo a {
+	color: white;
+}
+.solucoes-conteudo a:hover {
+	text-decoration: none;
+	color: white;
+}
+.bg-icon {
+	width:97px;
+	height:97px;
+	-webkit-border-radius:50px;
+	-moz-border-radius:50px;
+	border-radius:50px;
+	display:block;
+}
+.criacao {background: url(../img/criacao-icon.png) no-repeat 50% 50% #D82445;}
+.software-web {background: url(../img/software-web.png) no-repeat 50% 50% #D82445;}
+.ecommerce {background: url(../img/ecommerce.png) no-repeat 50% 50% #D82445;}
+.site-responsivo {background: url(../img/site-responsivo.png) no-repeat 50% 50% #D82445;}
+.solucoes-conteudo a {margin-bottom: 40px;display: block;}
+.solucoes-conteudo a:hover .bg-icon {background-color: #990000;}
+.ecossistema {color: black;}
