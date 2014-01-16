@@ -1,8 +1,13 @@
 /* ==========================================================================
 	Custom style bootstrap 3.0.0
    ========================================================================== */
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
 * {
-	font-family: 'century_gothicregular' !important;
+	font-family: 'century_gothicregular','Glyphicons Halflings' !important;
 }
 /* Linha 2081 */
 .btn-primary {
@@ -108,4 +113,25 @@
 .site-responsivo {background: url(../img/site-responsivo.png) no-repeat 50% 50% #D82445;}
 .solucoes-conteudo a {margin-bottom: 40px;display: block;}
 .solucoes-conteudo a:hover .bg-icon {background-color: #990000;}
-.ecossistema {color: black;}
+.carousel-inner  {
+	padding: 0px 30px 0px 30px;
+}
+.ecossistema a {
+	padding: 10px;
+	max-height: 330px;
+	display: block;
+}
+.ecossistema a, .ecossistema a:hover {
+	background-color: white;
+	color: black;
+	text-decoration: none;
+}
+.ecossistema .btn-primary {
+	margin: 0;
+	font-weight: bold;
+	color: #990000;
+	border-color: #990000;
+}
+.img-ecossistema {
+	height: 75px;
+}
