@@ -1,15 +1,50 @@
-<?php 
-	class TipoProjeto extends CI_Controller {	 
-		
-		function index() { 
-			$this->load->model('Tool','', TRUE);
-			$data = $this->Tool->getAll('tipoProjeto');
-			$this->load->view('painel/tipoProjeto/index',$data); 
+<?php
+	class TipoProjeto extends CI_Controller {
+
+		//carrega view index mostrando todos os tipoProjetos cadastrados
+		function index(){
+			$this->load->library('session');
+			$data['tipoProjetos'] = $this->ToolModel->getAllEntries('tipoProjeto');
+			$data['messageText'] = $this->session->flashdata('messageText');
+			$data['messageType'] = $this->session->flashdata('messageType');
+			$this->parser->parse('painel/tipoProjeto/index',$data); 
 		}
 		
-		function inserir(){
-			$campos = array('txtNome');
-			$dados = array('asdfgh');
-			$this->Tool->inserir($campos,'tipoProjeto',$dados);
-		} 
-	} 
+		//carregar view cadastrar
+		function cadastrar(){
+			$this->load->view('painel/tipoProjeto/cadastrar');
+		}
+		
+		//carregar view cadastrar com campos preenchidos para edição
+		function editar($id){
+			$b['tipoProjeto'] = $this->ToolModel->find('tipoProjeto', $id);
+			$this->parser->parse('painel/tipoProjeto/cadastrar',$b);
+		}
+		
+		//receber dados via POST e cadastrar no banco
+		function insert(){
+			$dadosInserir = array(
+				'txtNome' => $this->post->input('txtNome')
+			);
+			$this->ToolModel->inserir($dadosInserir, 'tipoProjeto');
+			
+			redirect("tipoProjeto/index");
+		}
+		
+		//receber dados via POST e dar update no banco
+		function update(){
+			$dadosUpdate = array(
+				'id' => $this->post->input('Id'),
+				'txtNome' => $this->post->input('txtNome')
+			);
+			$this->ToolModel->alterar($dadosUpdate, 'tipoProjeto'); 
+			redirect("tipoProjeto/index");
+		}	
+		
+		//receber id do tipoProjeto e excluí-lo do banco de dados e também o arquivo do servidor
+		function delete($id){
+			$this->ToolModel->excluir('tipoProjeto', $id);
+			redirect("tipoProjeto/index/");
+		}
+		
+	}//end controller Banner
