@@ -7,19 +7,20 @@
 			parent::__construct();
 		}
 		
-		function index(){
-			
+		function listar(){
+			$this->load->model('ToolModel','', TRUE);
+			return $this->ToolModel->getAllEntries('tipoProjeto');
 		}
 		
-		function cadastrar(){
-			
-		}
-		
-		function cadastrar($x){
+		function cadastrar($data){
 			
 		}
 		
 		function alterar(){
+			
+		}
+		
+		function update(){
 			
 		}
 

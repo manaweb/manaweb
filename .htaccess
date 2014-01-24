@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Apache Configuration File
 
 # (!) Using `.htaccess` files slows down Apache, therefore, if you have access
@@ -542,3 +543,8 @@ FileETag None
 # <IfModule mod_headers.c>
 #    Header set Connection Keep-Alive
 # </IfModule>
+=======
+RewriteEngine on
+RewriteCond $1 !^(index\.php|images|robots\.txt)
+RewriteRule ^(.*)$ /ManaWeb/index.php/$1 [L]
+>>>>>>> dev

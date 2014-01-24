@@ -64,7 +64,7 @@ $autoload['libraries'] = array('database','parser');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array();
+$autoload['helper'] = array('url');
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array();
+$autoload['model'] = array('ToolModel');
 
 
 /* End of file autoload.php */

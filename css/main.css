@@ -9,6 +9,10 @@
 * {
 	font-family: 'century_gothicregular','Glyphicons Halflings' !important;
 }
+body {
+	padding: 0;
+	color: black;
+}
 /* Linha 2081 */
 .btn-primary {
 	background-color: transparent;
@@ -46,6 +50,14 @@
 /* ==========================================================================
    Custom style main stylesheet
    ========================================================================== */
+.icones {
+	width: 30px;
+	height: 29px;
+	background: url(../img/redes-sociais-icones.png) no-repeat;
+}
+.icones.facebook {background-position: 15px 100%;}
+.icones.twitter {background-position: -13px 100%;}
+.icones.instagram {background-position: -38px 100%;}
 .menu-mana {
 	font-size: 16px;
 	margin-top: 20px;
@@ -105,6 +117,8 @@
 	-webkit-border-radius:50px;
 	-moz-border-radius:50px;
 	border-radius:50px;
+	-o-border-radius: 50px;
+	-ms-border-radius: 50px;
 	display:block;
 }
 .criacao {background: url(../img/criacao-icon.png) no-repeat 50% 50% #D82445;}
@@ -117,8 +131,8 @@
 	padding: 0px 30px 0px 30px;
 }
 .ecossistema a {
+	height: 310px;
 	padding: 10px;
-	max-height: 330px;
 	display: block;
 }
 .ecossistema a, .ecossistema a:hover {
@@ -134,4 +148,102 @@
 }
 .img-ecossistema {
 	height: 75px;
+}
+.projetos {}
+.projetos h1 {
+	font-size: 75px;
+	font-weight: bold;
+	margin-top: -7px;
+
+}
+.projetos h2 {
+	font-size: 30px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.espaco {
+	
+}
+.projetos .btn-primary {
+	margin-top: 15px;
+	margin-bottom: 25px;
+	background-color: #37AABC;
+	color: white;
+}
+.itens-projeto > div {
+	margin-bottom: 30px;
+}
+.itens-projeto img {
+	z-index: -1;
+	position: relative;
+}
+.itens-projeto a {
+	width: auto;
+	height: auto;
+	display: inline-block;
+	position: relative;
+}
+.itens-projeto a:hover, .itens-projeto a:active {
+	background: url(../img/projetos-icons.png) 50% 60% no-repeat;
+	background-color: rgba(0,0,0,0.75);
+	-webkit-transition: background-color 0.3s ease;
+	-moz-transition: background-color 0.3s ease;
+	-ms-transition: background-color 0.3s ease;
+	-o-transition: background-color 0.3s ease;
+	transition: background-color 0.3s ease;
+}
+.contato h1 {
+	font-weight: bold;
+	font-size: 60px;
+	margin-bottom: 5px;
+}
+.conversar {
+	padding-bottom: 70px;
+	background: url(../img/coffee.png) 50% 100% no-repeat;
+}
+.contato h3 {margin-top: 0px;margin-bottom: 25px;}
+.contato .destaque {color: #D65233;}
+.contato p {
+	font-size: 18px;
+	font-weight: bold;
+}
+.contato p > .destaque {
+	color: black;
+	font-size: 23px;
+}
+.contato hr {margin-top: 0px;}
+.contato .form-group {margin: 0;}
+.contato .form-control {
+	max-width: 100%;
+	/*-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-ms-border-radius: 0;
+	-o-border-radius: 0;
+	border-radius: 0;*/
+	border-color: #bbb;
+	margin-bottom: 15px;
+}
+.contato .btn-primary {
+	margin: 0;
+	color: #990000;
+	border-color: #990000;
+	font-weight: bold;
+	font-size: 19px;
+}
+.contato .btn-primary:hover, .contato .btn-primary:active, .contato .btn-primary:focus {
+	color: white;
+	background-color: #990000;
+	border-color: transparent;
+}
+footer {
+	padding-top: 40px;
+	padding-bottom: 50px;
+	color: white;
+	font-size: 18px;
+	background-color: #003956;
+}
+footer a {font-size: 16px;}
+footer a, footer a:hover {
+	text-decoration: none;
+	color: white;
 }
