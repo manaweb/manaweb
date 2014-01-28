@@ -154,7 +154,6 @@ body {
 	font-size: 75px;
 	font-weight: bold;
 	margin-top: -7px;
-
 }
 .projetos h2 {
 	font-size: 30px;
@@ -162,7 +161,6 @@ body {
 	margin-bottom: 0px;
 }
 .espaco {
-	
 }
 .projetos .btn-primary {
 	margin-top: 15px;
@@ -178,10 +176,7 @@ body {
 	position: relative;
 }
 .itens-projeto a {
-	width: auto;
-	height: auto;
-	display: inline-block;
-	position: relative;
+	
 }
 .itens-projeto a:hover, .itens-projeto a:active {
 	background: url(../img/projetos-icons.png) 50% 60% no-repeat;
