@@ -4,10 +4,13 @@
 		//carrega view index mostrando todos os banners cadastrados
 		function index(){
 			$this->load->library('session');
-			$data['banners'] = $this->ToolModel->getAllEntries('banner');
+			$data['banners'] = $this->Toolmodel->getAllEntries('banner');
 			$data['messageText'] = $this->session->flashdata('messageText');
 			$data['messageType'] = $this->session->flashdata('messageType');
-			$this->parser->parse('painel/banner/index',$data); 
+			$data['base_url'] = base_url();
+	    $data['contentPage'] = "painel/index";
+	    $data['pageTitle'] = "Painel de Controle";
+			$this->parser->parse('shared/index',$data); 
 		}
 		
 		//carregar view cadastrar
@@ -17,7 +20,7 @@
 		
 		//carregar view cadastrar com campos preenchidos para edição
 		function editar($id){
-			$b['banner'] = $this->ToolModel->find('banner', $id);
+			$b['banner'] = $this->Toolmodel->find('banner', $id);
 			$this->parser->parse('painel/banner/cadastrar',$b);
 		}
 		
@@ -44,7 +47,7 @@
 					'txtDest' => $this->post->input('txtDest'),
 					'txtImag' => $dataImagem['upload_data']['file_name']
 				);
-				$this->ToolModel->inserir($dadosInserir, 'banner');
+				$this->Toolmodel->inserir($dadosInserir, 'banner');
 				
 				redirect("banner/index");
 			}
@@ -57,16 +60,16 @@
 				'txtDest' => $this->post->input('txtDest')
 			);
 			//fazer a rotina de alterar imagem
-			$this->ToolModel->alterar($dadosUpdate, 'banner'); 
+			$this->Toolmodel->alterar($dadosUpdate, 'banner'); 
 			redirect("banner/index");
 		}	
 		
 		//receber id do banner e excluí-lo do banco de dados e também o arquivo do servidor
 		function delete($id){
-			$banner = $this->ToolModel->find('banner',$id);
+			$banner = $this->Toolmodel->find('banner',$id);
 			unlink(FCPATH."/img/banner/".$banner[0]->txtImag);
 			unlink(FCPATH."/img/banner/thumb/".$banner[0]->txtImag);
-			$this->ToolModel->excluir('banner', $id);
+			$this->Toolmodel->excluir('banner', $id);
 			redirect("banner/index/");
 		}
 		

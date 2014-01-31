@@ -2,16 +2,16 @@
 	class Home extends CI_Controller {	 
 		
 		function index() { 
-			//$data['banner'] = $this->ToolModel->getAllEntries('banner');
-			$data['projetos'] = $this->ToolModel->getAllEntries('projeto');
-			$data['tecnologias'] = $this->ToolModel->getAllEntries('tecnologia');
+			//$data['banner'] = $this->Toolmodel->getAllEntries('banner');
+			$data['projetos'] = $this->Toolmodel->getAllEntries('projeto');
+			$data['tecnologias'] = $this->Toolmodel->getAllEntries('tecnologia');
 			$this->db->select('*');
-		    $this->db->from('banner');
-		    //$this->db->where('id', '5');
-		    //$this->db->limit(1);
-		    $data['banners'] = $this->db->get()->result();
-		    $data['base_url'] = base_url(); 
-			$this->parser->parse('/home/index',$data);
+	    $this->db->from('banner');
+	    //$this->db->where('id', '5');
+	    //$this->db->limit(1);
+	    $data['banners'] = $this->db->get()->result();
+	    $data['base_url'] = base_url();
+			$this->parser->parse('shared/index',$data);
 		}
 		
 		function enviarContato(){
@@ -21,6 +21,6 @@
 				'subject' => 'Contato Site ManáWeb',
 				'message' => $msg
 			);
-			return $this->ToolModel->enviarEmail($dadosEmail);
+			return $this->Toolmodel->enviarEmail($dadosEmail);
 		}
 	}

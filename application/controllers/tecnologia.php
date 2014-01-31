@@ -4,7 +4,7 @@
 		//carrega view index mostrando todos os tecnologias cadastrados
 		function index(){
 			$this->load->library('session');
-			$data['tecnologias'] = $this->ToolModel->getAllEntries('tecnologia');
+			$data['tecnologias'] = $this->Toolmodel->getAllEntries('tecnologia');
 			$data['messageText'] = $this->session->flashdata('messageText');
 			$data['messageType'] = $this->session->flashdata('messageType');
 			$this->parser->parse('painel/tecnologia/index',$data); 
@@ -17,7 +17,7 @@
 		
 		//carregar view cadastrar com campos preenchidos para edição
 		function editar($id){
-			$b['tecnologia'] = $this->ToolModel->find('tecnologia', $id);
+			$b['tecnologia'] = $this->Toolmodel->find('tecnologia', $id);
 			$this->parser->parse('painel/tecnologia/cadastrar',$b);
 		}
 		
@@ -46,14 +46,14 @@
 					'master_dim' => 'height',
 					'thumb_marker' => ""
 				);
-				$this->ToolModel->criarThumb($configThumb);
+				$this->Toolmodel->criarThumb($configThumb);
 				$dadosInserir = array(
 					'txtText' => $this->post->input('txtText'),
 					'txtDest' => $this->post->input('txtDest'),
 					'txtImag' => $dataImagem['upload_data']['file_name'],
 					'txtMini' => $dataImagem['upload_data']['file_name']
 				);
-				$this->ToolModel->inserir($dadosInserir, 'tecnologia');
+				$this->Toolmodel->inserir($dadosInserir, 'tecnologia');
 				
 				redirect("tecnologia/index");
 			}
@@ -65,17 +65,17 @@
 				'txtText' => $this->post->input('txtText'),
 				'txtDest' => $this->post->input('txtDest'),
 			);
-			$this->ToolModel->alterar($dadosUpdate, 'tecnologia'); 
+			$this->Toolmodel->alterar($dadosUpdate, 'tecnologia'); 
 			redirect("tecnologia/index");
 		}	
 		
 		//receber id do tecnologia e o exclui do banco de dados e também a imagem e a miniatura do servidor
 		function delete($id){
 			$this->load->library('session');
-			$tecnologia = $this->ToolModel->find('tecnologia',$id);
+			$tecnologia = $this->Toolmodel->find('tecnologia',$id);
 			unlink(FCPATH."/img/tecnologia/".$tecnologia[0]->txtImag);
 			unlink(FCPATH."/img/tecnologia/thumb/".$tecnologia[0]->txtImag);
-			$this->ToolModel->excluir('tecnologia', $id);
+			$this->Toolmodel->excluir('tecnologia', $id);
 			redirect("tecnologia/index/");
 		}
 		

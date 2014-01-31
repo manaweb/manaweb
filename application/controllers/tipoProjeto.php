@@ -4,10 +4,10 @@
 		//carrega view index mostrando todos os tipoProjetos cadastrados
 		function index(){
 			$this->load->library('session');
-			$data['tipoProjetos'] = $this->ToolModel->getAllEntries('tipoProjeto');
+			$data['tipoProjetos'] = $this->Toolmodel->getAllEntries('tipoProjeto');
 			$data['messageText'] = $this->session->flashdata('messageText');
 			$data['messageType'] = $this->session->flashdata('messageType');
-			$this->parser->parse('painel/tipoProjeto/index',$data); 
+			$this->parser->parse('tipoProjeto/index',$data); 
 		}
 		
 		//carregar view cadastrar
@@ -17,7 +17,7 @@
 		
 		//carregar view cadastrar com campos preenchidos para edição
 		function editar($id){
-			$b['tipoProjeto'] = $this->ToolModel->find('tipoProjeto', $id);
+			$b['tipoProjeto'] = $this->Toolmodel->find('tipoProjeto', $id);
 			$this->parser->parse('painel/tipoProjeto/cadastrar',$b);
 		}
 		
@@ -26,7 +26,7 @@
 			$dadosInserir = array(
 				'txtNome' => $this->post->input('txtNome')
 			);
-			$this->ToolModel->inserir($dadosInserir, 'tipoProjeto');
+			$this->Toolmodel->inserir($dadosInserir, 'tipoProjeto');
 			
 			redirect("tipoProjeto/index");
 		}
@@ -37,13 +37,13 @@
 				'id' => $this->post->input('Id'),
 				'txtNome' => $this->post->input('txtNome')
 			);
-			$this->ToolModel->alterar($dadosUpdate, 'tipoProjeto'); 
+			$this->Toolmodel->alterar($dadosUpdate, 'tipoProjeto'); 
 			redirect("tipoProjeto/index");
 		}	
 		
 		//receber id do tipoProjeto e excluí-lo do banco de dados e também o arquivo do servidor
 		function delete($id){
-			$this->ToolModel->excluir('tipoProjeto', $id);
+			$this->Toolmodel->excluir('tipoProjeto', $id);
 			redirect("tipoProjeto/index/");
 		}
 		

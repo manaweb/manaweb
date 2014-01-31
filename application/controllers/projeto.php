@@ -4,7 +4,7 @@
 		//carrega view index mostrando todos os projetos cadastrados
 		function index(){
 			$this->load->library('session');
-			$data['projetos'] = $this->ToolModel->getAllEntries('projeto');
+			$data['projetos'] = $this->Toolmodel->getAllEntries('projeto');
 			$data['messageText'] = $this->session->flashdata('messageText');
 			$data['messageType'] = $this->session->flashdata('messageType');
 			$this->parser->parse('painel/projeto/index',$data); 
@@ -17,7 +17,7 @@
 		
 		//carregar view cadastrar com campos preenchidos para edição
 		function editar($id){
-			$b['projeto'] = $this->ToolModel->find('projeto', $id);
+			$b['projeto'] = $this->Toolmodel->find('projeto', $id);
 			$this->parser->parse('painel/projeto/cadastrar',$b);
 		}
 		
@@ -48,7 +48,7 @@
 					'master_dim' => 'width',
 					'thumb_marker' => ""
 				);
-				$this->ToolModel->criarThumb($configThumb);
+				$this->Toolmodel->criarThumb($configThumb);
 				$dadosInserir = array(
 					'txtText' => $this->post->input('txtText'),
 					'txtDest' => $this->post->input('txtDest'),
@@ -56,7 +56,7 @@
 					'txtImag' => $dataImagem['upload_data']['file_name'],
 					'txtMini' => $dataImagem['upload_data']['file_name']
 				);
-				$this->ToolModel->inserir($dadosInserir, 'projeto');
+				$this->Toolmodel->inserir($dadosInserir, 'projeto');
 				
 				redirect("projeto/index");
 			}
@@ -70,16 +70,16 @@
 				'IdTipoProjeto' => $this->post->input('idTipoProjeto'),
 			);
 			//fazer parte de atualizar imagem
-			$this->ToolModel->alterar($dadosUpdate, 'projeto'); 
+			$this->Toolmodel->alterar($dadosUpdate, 'projeto'); 
 			redirect("projeto/index");
 		}	
 		
 		//receber id do projeto e o exclui do banco de dados e também a imagem e a miniatura do servidor
 		function delete($id){
-			$projeto = $this->ToolModel->find('projeto',$id);
+			$projeto = $this->Toolmodel->find('projeto',$id);
 			unlink(FCPATH."/img/projeto/".$projeto[0]->txtImag);
 			unlink(FCPATH."/img/projeto/thumb/".$projeto[0]->txtImag);
-			$this->ToolModel->excluir('projeto', $id);
+			$this->Toolmodel->excluir('projeto', $id);
 			redirect("projeto/index/");
 		}
 		

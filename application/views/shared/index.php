@@ -131,7 +131,7 @@
 
 
 				<div class="row">
-					{contentPage}
+					<?php $this->load->view($contentPage) ?>
 				</div> 
         
         
