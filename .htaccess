@@ -542,7 +542,10 @@ FileETag None
 # <IfModule mod_headers.c>
 #    Header set Connection Keep-Alive
 # </IfModule>
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
 RewriteEngine on
 RewriteCond $1 !^(index\.php|images|assets|fonts|robots\.txt)
 RewriteRule ^(.*)$ /manaweb/index.php/$1 [L]
