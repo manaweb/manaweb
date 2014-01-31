@@ -9,6 +9,6 @@ $(function() {
 	 
 			$obj.css('background-position', bgpos );
 	 
-		}); 
+		});
 	});
 });
