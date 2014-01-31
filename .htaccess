@@ -545,4 +545,4 @@ FileETag None
 
 RewriteEngine on
 RewriteCond $1 !^(index\.php|images|assets|fonts|robots\.txt)
-RewriteRule ^(.*)$ /ManaWeb/index.php/$1 [L]
+RewriteRule ^(.*)$ /manaweb/index.php/$1 [L]
