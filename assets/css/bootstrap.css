@@ -1804,6 +1804,7 @@ table th[class*="col-"] {
 }
 
 @media (max-width: 767px) {
+  .sua-empresa strong {font-size: 1em !important;}
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;
@@ -2174,6 +2175,8 @@ textarea.input-lg {
 }
 
 @media (min-width: 768px) {
+  .sua-empresa p {margin-top: 20px;}
+  .sua-empresa .btn-primary {margin-top: 5px;}
   .form-inline .form-group {
     display: inline-block;
     margin-bottom: 0;
@@ -4545,6 +4548,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 @media (max-width: 767px) {
+  .jumbospace {
+    margin-bottom: 0px !important;
+  }
   .navbar-nav .open .dropdown-menu {
     position: static;
     float: none;
@@ -4568,6 +4574,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 @media (min-width: 768px) {
+  .jumbospace {
+    margin-bottom: 0px !important;
+  }
   .navbar-nav {
     float: left;
     margin: 0;

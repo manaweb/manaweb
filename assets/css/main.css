@@ -12,6 +12,7 @@
 body {
 	padding: 0;
 	color: black;
+	zoom: 1 !important;
 }
 /* Linha 2081 */
 .btn-primary {

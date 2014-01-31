@@ -11,12 +11,6 @@
         <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="{base_url}/assets/css/bootstrap.css">
-        <style>
-            body {
-                padding-top: 50px;
-                padding-bottom: 20px;
-            }
-        </style>
         <link rel="stylesheet" href="{base_url}/assets/css/main.css">
         <link rel="stylesheet" type="text/css" href="{base_url}/assets/fonts/century_gothic/stylesheet.css">
         <link rel="stylesheet" type="text/css" href="{base_url}/assets/css/carousel.css">
@@ -66,11 +60,11 @@
               <span class="clearfix"></span>
             </p>
             <p>
-              <img src="{base_url}/assets/img/barras.png" class="img-responsive" />
+              <img src="{base_url}/assets/img/barras.png" class="visible-lg visible-md hidden-sm hidden-xs img-responsive" />
             </p>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <img src="{base_url}/assets/img/img-sites.png" class="img-responsive" />
+            <img src="{base_url}/assets/img/img-sites.png" class="visible-lg visible-md hidden-sm hidden-xs img-responsive" />
           </div>
         </div>
       </div>
@@ -108,94 +102,13 @@
               <p class="clearfix">Sites funcionais, de fácil leitura e navegação em diversos dispositivos, como monitores, celulares, tablets e smartphones.</p>
             </a>
             <div>
-              <img src="{base_url}/assets/img/visu-responsive.png" class="img-responsive img-space">
+              <img src="{base_url}/assets/img/visu-responsive.png" class="img-responsive center-block">
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container ecossistema">
-      <div class="row">
-        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center">
-          <img src="{base_url}/assets/img/ecossistema.png" class="img-responsive" alt="Buscapé">
-          <h2>com tecnologia <strong>manáweb</strong></h2>
-        </div>
-      </div>
-
-        <div class="row">
-
-            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><!-- left caroussel controls -->
-              <a class="carousel-control" data-slide="prev" href="#myCarousel">
-                <span class="glyphicon glyphicon-chevron-left badge"></span>
-              </a>
-            </div>
-
-            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10"><!-- Carousel center -->
-              <div class="container"> 
-
-                    <div id="myCarousel" class="carousel slide">
-                      <!-- Carousel items -->
-                      <div class="carousel-inner">
-                            
-                        <div class="item active">
-                          <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                              <a href="#x" title="Buscapé">
-                                <div class="img-ecossistema col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                                  <img src="{base_url}/assets/img/buscape-mini.png" alt="Buscapé">
-                                </div>
-                                <p>
-                                  Anuncie gratuitamente todo seu catálogo de produtos no maior serviço de comparação de preços da América Latina. O Buscapé compara preços de milhões de produtos vendidos em milhares de lojas.
-                                </p>
-                              </a>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                              <a href="#x" title="BCash">
-                                <div class="img-ecossistema col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                                  <img src="{base_url}/assets/img/bcash-mini.png" alt="BCash">
-                                </div>
-                                <p>
-                                  Bcash é o gerenciador de pagamentos on-line, simples, rápido, de baixo custo e especialmente desenhado para que as compras e vendas na internet sejam feitas em um ambiente totalmente seguro.
-                                </p>
-                              </a>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                              <a href="#x" title="BTarget">
-                                <div class="img-ecossistema col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                                  <img src="{base_url}/assets/img/btarget-mini.png" alt="BTarget">
-                                </div>
-                                <p>
-                                  Gratuidade de 2 meses com o sistema de alta tecnologia que permite a personalização de conteúdo, recomendações de produtos e interações em tempo real com o visitante, tudo isso para aumentar as suas vendas. 
-                                </p>
-                              </a>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                              <a href="#x" title="Ebit">
-                                <div class="img-ecossistema col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                                  <img src="{base_url}/assets/img/ebit-mini.png" alt="Ebit">
-                                </div>
-                                <p>
-                                  Integração com a mais conceituada ferramenta de classificação de lojas virtuais, que transmite confiança e tranquilidade para o e-consumidor.
-                                </p>
-                              </a>
-                            </div>
-                          </div><!--/row-fluid-->
-                        </div><!--/item-->
-                      </div><!--/carousel-inner-->
-                  </div><!--/myCarousel-->
-              </div><!--/container-->   
-            </div>
-
-            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><!-- right caroussel controls -->
-              <a class="carousel-control" data-slide="next" href="#myCarousel">
-                <span class="glyphicon glyphicon-chevron-right badge"></span>
-              </a>
-            </div>
-
-          </div>
-
-    </div>
 
     <div class="container projetos">
       <div class="row">
@@ -211,9 +124,9 @@
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 itens-projeto">
         	{projetos}
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
               <a href="{txtDest}">
-                <img src="{base_url}/assets/img/projeto/{txtImag}" class="img-responsive">
+                <img src="{base_url}/assets/img/projeto/{txtImag}" class="center-block img-responsive">
               </a>
             </div>
             {/projetos}
@@ -237,8 +150,8 @@
             </span>
           </p>
         </div>
-        <div class="row col-lg-8 col-md-8 col-sm-12 col-xs-12">
-           <form class="form-horizontal" role="form">
+        <div class="row">
+           <form class="form col-lg-8 col-md-8 col-sm-12 col-xs-12" role="form">
               <div class="form-group">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                   <input type="Nome" class="form-control" id="nome" name="nome" placeholder="Nome*" required>
