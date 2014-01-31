@@ -11,7 +11,7 @@
 	    //$this->db->limit(1);
 	    $data['banners'] = $this->db->get()->result();
 	    $data['base_url'] = base_url();
-			$this->parser->parse('shared/index',$data);
+			$this->parser->parse('home/index',$data);
 		}
 		
 		function enviarContato(){

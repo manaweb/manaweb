@@ -8,7 +8,7 @@
 			$data['messageText'] = $this->session->flashdata('messageText');
 			$data['messageType'] = $this->session->flashdata('messageType');
 			$data['base_url'] = base_url();
-	    $data['contentPage'] = "painel/index";
+	    $data['contentPage'] = "painel/banner/index";
 	    $data['pageTitle'] = "Painel de Controle";
 			$this->parser->parse('shared/index',$data); 
 		}

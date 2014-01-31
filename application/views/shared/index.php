@@ -9,11 +9,13 @@
     <title>Tables - SB Admin</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="{base_url}/assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Add custom CSS here -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link href="{base_url}/assets/css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="{base_url}/assets/font-awesome/css/font-awesome.min.css">
+    
+    <script src="{base_url}/assets/js/jquery-1.10.2.js"></script>
   </head>
 
   <body>
@@ -130,7 +132,7 @@
         </div><!-- /.row -->
 
 
-				<div class="row">
+				<div class="sectio conteudo">
 					<?php $this->load->view($contentPage) ?>
 				</div> 
         
@@ -141,12 +143,11 @@
     </div><!-- /#wrapper -->
 
     <!-- JavaScript -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="{base_url}/assets/js/bootstrap.js"></script>
 
     <!-- Page Specific Plugins -->
-    <script src="js/tablesorter/jquery.tablesorter.js"></script>
-    <script src="js/tablesorter/tables.js"></script>
+    <script src="{base_url}/assets/js/tablesorter/jquery.tablesorter.js"></script>
+    <script src="{base_url}/assets/js/tablesorter/tables.js"></script>
 
   </body>
 </html>

@@ -7,7 +7,7 @@
 			$data['base_url'] = base_url();
 	    $data['contentPage'] = "painel/index";
 	    $data['pageTitle'] = "Painel de Controle";	
-			$this->load->view('painel/index', $data);
+			$this->parser->parse('shared/index', $data);
 		}
 		
 		function login(){

@@ -1,5 +1,5 @@
 <?php
-	class ToolModel extends CI_Model {
+	class Toolmodel extends CI_Model {
 		function __construct (){ //construtor
 			parent::__construct();
 		}
