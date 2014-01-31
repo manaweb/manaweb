@@ -13,7 +13,15 @@
 	    $data['itens'] = array(
 	    									array("nome" => 'Listagens'),
 	    									array("nome" => 'Banner'));
-	    //$teste['teste'] = $data;
+			$query = "select * from banner order by id";
+			$campos = array(
+				array('texto', 'Título', 'txtTitu'),
+				array('texto', 'Destino', 'txtDest'),
+				array('imagem', 'Imagem', 'txtImag'),
+				array('texto', 'Negão', 'txtImag'),
+			);
+			$acoes = array(1,2);
+			$data['lista'] = $this->Toolmodel->listarTodos($campos, $query, $acoes, 'banner');
 			$this->parser->parse('shared/index',$data); 
 		}
 		
