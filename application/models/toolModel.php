@@ -110,6 +110,86 @@
 			
 			return $this->email->send();
 		}
+		
+		//cria uma tabela de listagem com os campos passados
+		/*
+		 * $campos = array(
+		 * 	array($tipo, $titulo, $campoNaTabela)
+		 * )
+		 * 
+		 * $tipo = 'texto' || 'imagem'
+		 * $titulo = 'string q será o cabeçalho da coluna'
+		 * $campoNaTabela = 'nome do campo no banco de dados'
+		 * 
+		 * $acoes = array(x, y);
+		 * 	1 = Editar
+		 * 	2 = Excluir
+		 * 	3 = Desativar
+		 * 	4 = Visualizar
+		 * 
+		 * $query = 'comando sql desejado'
+		 * 
+		 * */
+		function listarTodos($campos, $query, $acoes, $controller){
+			$q = $this->db->query($query);
+			$topos = "<th>Ações</th>";
+			$conteudos = "<tr>";
+			
+			for($i = 0; $i < sizeof($campos); $i++){
+				$topos .=
+					'
+						<th>'.$campos[$i][1].' <i class="fa fa-sort"></i></th>
+					';
+			}
+			
+			foreach ($q->result_array() as $dados){
+				$conteudos .= "<td>";
+				for($i = 0; $i < sizeof($acoes); $i++){
+					switch($acoes[$i]){
+						case 1: 
+							$conteudos .= "<a href='".base_url()."/".$controller."/edit/".$dados['Id']."'></a>";
+						case 2: 
+							$conteudos .= "<a href='".base_url()."/".$controller."/delete/".$dados['Id']."'></a>";
+						case 3: 
+							$conteudos .= "";
+						case 2: 
+							$conteudos .= "<a href='".base_url()."/".$controller."/visualizar/".$dados['Id']."'></a>";
+					}						
+				}
+				$conteudos .= "</td>";
+				for($i = 0; $i < sizeof($campos); $i++){
+					switch($campos[$i][0]){
+						case 'texto': 
+							$conteudos .= "<td>".$dados[$campos[$i][2]]."</td>";
+							break;
+						case 'imagem': 
+							$conteudos .= "<td><a href='".base_url()."/assets/img/".$controller."/".$dados[$campos[$i][2]]."' target='_blank'><img src='".base_url()."/assets/img/".$controller."/".$dados[$campos[$i][2]]."' alt=''></td>";
+							break;
+					}
+				}
+				$conteudos .= "</tr>";
+				
+			}
+			
+			$saida = '
+				<div class="col-lg-12">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover table-striped tablesorter">
+                <thead>
+                  <tr>
+										'.$topos.'
+                  </tr>
+                </thead>
+                <tbody>
+                  '.$conteudos.'
+                </tbody>
+              </table>
+            </div>
+          </div>';
+			
+			return $saida;
+		}
+		
 
 
 	}
