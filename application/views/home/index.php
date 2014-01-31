@@ -50,7 +50,7 @@
     </div>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron sua-empresa">
+    <div class="jumbotron sua-empresa bgParallax" data-speed="15">
       <div class="container jumbospace">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -70,7 +70,7 @@
       </div>
     </div>
 
-    <div class="jumbotron solucoes-web">
+    <div class="jumbotron solucoes-web bgParallax" data-speed="10">
       <div class="container">
         <!-- Example row of columns -->
         <div class="row">
