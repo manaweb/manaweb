@@ -125,15 +125,16 @@
           <div class="col-lg-12">
             <h1>{pageTitle}</h1>
             <ol class="breadcrumb">
-              <li><a href="{pageName}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-              <li class="active"><i class="fa fa-table"></i> Tables</li>
+            	{itens}
+              <li><a href=""><i class="fa fa-dashboard"></i> {nome}</a></li>
+              {/itens}
             </ol>
           </div>
         </div><!-- /.row -->
 
-
+	
 				<div class="sectio conteudo">
-					<?php $this->load->view($contentPage) ?>
+						<?php $this->load->view($contentPage) ?>
 				</div> 
         
         

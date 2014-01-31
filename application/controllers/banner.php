@@ -9,7 +9,11 @@
 			$data['messageType'] = $this->session->flashdata('messageType');
 			$data['base_url'] = base_url();
 	    $data['contentPage'] = "painel/banner/index";
-	    $data['pageTitle'] = "Painel de Controle";
+	    $data['pageTitle'] = "Banners";
+	    $data['itens'] = array(
+	    									array("nome" => 'Listagens'),
+	    									array("nome" => 'Banner'));
+	    //$teste['teste'] = $data;
 			$this->parser->parse('shared/index',$data); 
 		}
 		
