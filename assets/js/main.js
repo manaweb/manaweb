@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
 	$('.bgParallax').each(function(){
 		var $obj = $(this);
 	 
@@ -11,4 +11,4 @@ $(function() {
 	 
 		});
 	});
-});
+});*/

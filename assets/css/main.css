@@ -2,7 +2,18 @@
 	Custom style bootstrap 3.0.0
    ========================================================================== */
 @font-face {
-  font-family: 'Glyphicons Halflings';
+    font-family: 'century_gothicregular';
+    src: url('../fonts/century_gothic/century_gothic-webfont.eot');
+    src: url('../fonts/century_gothic/century_gothic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/century_gothic/century_gothic-webfont.woff') format('woff'),
+         url('../fonts/century_gothic/century_gothic-webfont.ttf') format('truetype'),
+         url('../fonts/century_gothic/century_gothic-webfont.svg#century_gothicregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+  font-family: 'Glyphicons Halflings','century_gothicregular';
   src: url('../fonts/glyphicons-halflings-regular.eot');
   src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
@@ -12,9 +23,8 @@
 body {
 	padding: 0;
 	color: black;
-	zoom: 1 !important;
 }
-.bgParallax {
+/*.bgParallax {
 	background-position: 50% 0;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -70,6 +80,13 @@ body {
 	font-size: 16px;
 	margin-top: 20px;
 }
+.customGlyph {
+	top: -35px;
+	color: white;
+	font-size: 20px;
+	display: block;
+	position: relative;
+}
 .sua-empresa {
 	background-image: url(../img/bg-inicial.jpg);
 	color: white;
@@ -101,7 +118,7 @@ body {
 .solucoes-web h1, .ecossistema h1 {
 	font-weight: bold;
 	font-size: 55px;
-	letter-spacing: -2.5px;
+	
 }
 .solucoes-web h2 {
 	margin-bottom: 60px;
@@ -134,25 +151,13 @@ body {
 .site-responsivo {background: url(../img/site-responsivo.png) no-repeat 50% 50% #D82445;}
 .solucoes-conteudo a {margin-bottom: 40px;display: block;}
 .solucoes-conteudo a:hover .bg-icon {background-color: #990000;}
-.carousel-inner  {
-	padding: 0px 30px 0px 30px;
-}
-.ecossistema a {
+.ecossistema h1 {margin-right: 50px;}
+.ecossistema .buscape-logo {margin-top: 20px;margin-bottom: 20px;}
+/*.ecossistema a {
 	height: 310px;
 	padding: 10px;
 	display: block;
-}
-.ecossistema a, .ecossistema a:hover {
-	background-color: white;
-	color: black;
-	text-decoration: none;
-}
-.ecossistema .btn-primary {
-	margin: 0;
-	font-weight: bold;
-	color: #990000;
-	border-color: #990000;
-}
+}*/
 .img-ecossistema {
 	height: 75px;
 }
@@ -167,13 +172,15 @@ body {
 	margin-top: 0px;
 	margin-bottom: 0px;
 }
-.espaco {
-}
+.espaco {}
 .projetos .btn-primary {
 	margin-top: 15px;
 	margin-bottom: 25px;
 	background-color: #37AABC;
 	color: white;
+}
+.projetos .btn-lg {
+	background-color: #2e91a0;
 }
 .itens-projeto > div {
 	margin-bottom: 30px;
@@ -248,4 +255,32 @@ footer a {font-size: 16px;}
 footer a, footer a:hover {
 	text-decoration: none;
 	color: white;
+}
+@media (max-width: 376px) {
+	.ecossistema h1 {
+		font-size: 45px;
+	}
+}
+@media(max-width: 480px) {
+	#listMenu {top: 0px;}
+}
+@media(max-width: 768px) {
+	html,body {zoom: 0 !important;}
+	.buscape-logo {
+		margin-top: 0px !important;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 25px;
+	}
+}
+@media (min-width: 768px) {
+	.ecossistema h1 {
+		font-size: 54px;
+		margin-bottom: 0px;
+	}
+}
+@media (max-width: 991px) {
+	.contato .form-control {
+		min-height: 75px;
+	}
 }

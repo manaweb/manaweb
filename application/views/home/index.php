@@ -3,18 +3,15 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <!--<link rel="stylesheet" type="text/css" href="{base_url}assets/css/carousel.css">-->
     <head>
+        <link rel="stylesheet" href="{base_url}assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{base_url}assets/css/main.css">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Maná WEB</title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-
-        <link rel="stylesheet" href="{base_url}/assets/css/bootstrap.css">
-        <link rel="stylesheet" href="{base_url}/assets/css/main.css">
-        <link rel="stylesheet" type="text/css" href="{base_url}/assets/fonts/century_gothic/stylesheet.css">
-        <link rel="stylesheet" type="text/css" href="{base_url}/assets/css/carousel.css">
-        <script src="{base_url}/assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -26,16 +23,18 @@
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="navbar-header">
                 <a class="navbar-brand clearfloat" href="#">
-                  <img src="{base_url}/assets/img/mana-top.png" alt="Maná WEB" class="img-responsive visible-lg visible-md hidden-sm hidden-xs" />
+                  <img src="{base_url}assets/img/mana-top.png" alt="Maná WEB" class="img-responsive visible-lg visible-md hidden-sm hidden-xs" />
                 </a>
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-              <p class="hidden-lg hidden-md visible-sm visible-xs" data-toggle="collapse" data-target=".navbar-collapse" style="color: transparent">
-                <img src="{base_url}/assets/img/mana-top.png" alt="Maná WEB" class="img-responsive" />
-                Menu
+              <p class="hidden-lg hidden-md visible-sm visible-xs" data-toggle="collapse" data-target=".navbar-collapse">
+
+                <img src="{base_url}assets/img/mana-top.png" alt="Maná WEB" class="img-responsive" />
+                <span class="pull-right glyphicon glyphicon-list customGlyph hidden-lg hidden-md hidden-sm visible-xs" id="listMenu"></span>
+                &nbsp;
               </p>
-              <div class="navbar-collapse collapse menu-mana">
+              <div class="navbar-collapse collapse menu-mana clearfix">
                 <ul class="nav navbar-nav">
                   <li class="active"><a href="#">home</a></li>
                   <li><a href="#quemsomos">quem somos</a></li>
@@ -50,7 +49,7 @@
     </div>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron sua-empresa bgParallax" data-speed="15">
+    <div class="jumbotron sua-empresa">
       <div class="container jumbospace">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -60,11 +59,11 @@
               <span class="clearfix"></span>
             </p>
             <p>
-              <img src="{base_url}/assets/img/barras.png" class="visible-lg visible-md hidden-sm hidden-xs img-responsive" />
+              <img src="{base_url}assets/img/barras.png" class="visible-lg visible-md hidden-sm hidden-xs img-responsive" />
             </p>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <img src="{base_url}/assets/img/img-sites.png" class="visible-lg visible-md hidden-sm hidden-xs img-responsive" />
+            <img src="{base_url}assets/img/img-sites.png" class="visible-lg visible-md hidden-sm hidden-xs img-responsive" />
           </div>
         </div>
       </div>
@@ -102,13 +101,28 @@
               <p class="clearfix">Sites funcionais, de fácil leitura e navegação em diversos dispositivos, como monitores, celulares, tablets e smartphones.</p>
             </a>
             <div>
-              <img src="{base_url}/assets/img/visu-responsive.png" class="img-responsive center-block">
+              <img src="{base_url}assets/img/visu-responsive.png" class="img-responsive center-block">
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <!--<div class="container ecossistema">
+      <div class="row">
+       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+        <div class="col-lg-8 col-lg-push-1 col-md-8 col-md-push-1 col-sm-8 col-sm-push-1 col-xs-12">
+          <h1 class="text-center center-block"><strong>O ecossistema</strong></h1>
+        </div>
+        <div class="col-lg-4 col-lg-pull-1 col-md-4 col-md-pull-0 col-sm-4 col-sm-pull-0 col-xs-12">
+          <a href="https://www.buscapecompany.com/pt/plataformas.htm">
+            <img class="img-responsive buscape-logo" src="{base_url}assets/img/buscape-logo.png" alt="Buscapé">
+          </a>
+        </div>
+        <h2>tecnologia <strong>manáweb</strong></h2>
+       </div>
+      </div>
+    </div>-->
 
     <div class="container projetos">
       <div class="row">
@@ -117,7 +131,7 @@
             <h2>Conheça alguns</h2>
             <h1>Projetos</h1>
             <h2>Que já desenvolvemos!</h2>
-            <a class="btn btn-primary btn-md">TODOS</a>
+            <a class="btn btn-primary btn-lg">TODOS</a>
             <a class="btn btn-primary btn-md">SITES</a>
             <a class="btn btn-primary btn-md">ECOMMERCE</a>
           </div>
@@ -126,7 +140,7 @@
         	{projetos}
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
               <a href="{txtDest}">
-                <img src="{base_url}/assets/img/projeto/{txtImag}" class="center-block img-responsive">
+                <img src="{base_url}assets/img/projeto/{txtImag}" class="center-block img-responsive">
               </a>
             </div>
             {/projetos}
@@ -232,29 +246,37 @@
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">
               <a href="javascript:void(0);">
-                <img src="{base_url}/assets/img/mana-logo.png" alt="Maná WEB">
+                <img src="{base_url}assets/img/mana-logo.png" alt="Maná WEB">
               </a>
             </div>
           </div>
         </div>
       </footer>
-        <script src="{base_url}/assets/js/vendor/jquery-1.10.1.min.js"></script>
+        <script src="{base_url}assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js" async></script>
+        <script src="{base_url}assets/js/vendor/jquery-1.10.1.min.js" async></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
 
-        <script src="{base_url}/assets/js/vendor/bootstrap.min.js"></script>
+        <script src="{base_url}assets/js/vendor/bootstrap.min.js" async></script>
 
-        <script src="{base_url}/assets/js/plugins.js"></script>
-        <script src="{base_url}/assets/js/main.js"></script>
+        <script src="{base_url}assets/js/plugins.js" async></script>
+        <script src="{base_url}assets/js/main.js" async></script>
 
         <script>
+
           $(document).ready(function() {
-            $('#myCarousel').carousel({
+
+           /* $('#myCarousel').carousel({
               interval: 10000
           	});
+           */
+            $('.projetos .btn').click(function() {
+              $('.projetos .btn').removeClass('btn-lg');
+              $(this).removeClass('btn-md').addClass('btn-lg');
+            });
 
             $("#btn-contato").click(function(){
             	$.ajax({
-	                'url' : {base_url} + '/home/get_list_view',
+	                'url' : '{base_url}home/get_list_view',
 	                'type' : 'POST', //the way you want to send data to your URL
 	                'data' : {'type' : type},
 	                'success' : function(data){ //probably this request will return anything, it'll be put in var "data"
