@@ -13,14 +13,14 @@
 		    $data['contentPage'] = "painel/tipoProjeto/index";
 		    $data['pageTitle'] = "Tipos de Projeto";
 		    $data['itens'] = array(
-								array("nome" => 'Listagens'),
-								array("nome" => 'Tipos de Projeto')
+								array("nome" => 'Tipos de Projeto', 'icone' => 'glyphicon-asterisk', 'url' => "tipoprojeto"),
 							);
 			$query = "select * from tipoProjeto order by id desc";
 			$campos = array(
 				array('texto', 'Tipo de Projeto', 'txtNome'),
+				array('imagem', 'Imagem teste', 'upload')
 			);
-			$acoes = array(1,2, 3, 4);
+			$acoes = array(1,2,3);
 			$data['lista'] = $this->Toolmodel->painelListar($campos, $query, $acoes, 'tipoProjeto');
 			//$this->output->cache(5);
 			$this->parser->parse('shared/index',$data);
@@ -30,14 +30,15 @@
 		function cadastrar(){
 			$data['message'] = "";
 			$data['itens'] = array(
-								array("nome" => 'Cadastros'),
-								array("nome" => 'Tipos de Projeto')
+								array("nome" => 'Tipos de Projeto', 'icone' => 'glyphicon-asterisk', 'url' => "tipoprojeto"),
+								array("nome" => 'Novo Tipo de Projeto', 'icone' => 'glyphicon-euro', 'url' => "tipoprojeto/cadastrar"),
 							);
 			$data['base_url'] = base_url();
-		    $data['contentPage'] = "painel/tipoProjeto/cadastrar";
-		    $data['pageTitle'] = "Cadastrar Tipo de Projeto";
+	    $data['contentPage'] = "painel/tipoProjeto/cadastrar";
+	    $data['pageTitle'] = "Cadastrar Tipo de Projeto";
 			$campos = array(
 				array('text', 'Nome', 'txtNome', 'placeholder="Nome do Tipo de projeto" required', 'Comentario de teste'),
+				array('file', 'Arquivo Teste', 'upload', 'required', ''),
 			);
 			$data['campos'] = $this->Toolmodel->painelCampos($campos, 'tipoProjeto', 'insert', '');
 			
@@ -66,8 +67,17 @@
 		
 		//receber dados via POST e cadastrar no banco
 		function insert(){
+			
+			$caminho = "tipoprojeto";
+			$proporcoes = array(
+				'width' => 170,
+				'height' => 200,
+				'principal' => 'height'
+			);
+			$nomeArquivo = Helperpainel::fazerUpload($caminho, true, $proporcoes);
 			$dadosInserir = array(
-				'txtNome' => $this->input->post('txtNome')
+				'txtNome' => $this->input->post('txtNome'),
+				'upload' => $nomeArquivo,
 			);
 			$this->Toolmodel->inserir('tipoProjeto', $dadosInserir);
 			redirect("tipoProjeto/index");

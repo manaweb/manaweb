@@ -124,7 +124,7 @@
             <h1>{pageTitle}</h1>
             <ol class="breadcrumb">
             	{itens}
-              <li><a href=""><i class="fa fa-dashboard"></i> {nome}</a></li>
+              <li><a href="{base_url}{url}"><i class="glyphicon {icone}"></i> {nome}</a></li>
               {/itens}
             </ol>
           </div>

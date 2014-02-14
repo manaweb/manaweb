@@ -122,17 +122,6 @@
 				redirect('/painel/painel/login');
 		}
 		
-		//envia emails
-		function enviarEmail($dadosEmail){
-			$this->email->from($dadosEmail['from']);
-			$this->email->to($dadosEmail['to']); 
-			
-			$this->email->subject($dadosEmail['subject']);
-			$this->email->message($dadosEmail['msg']);	
-			
-			return $this->email->send();
-		}
-		
 		//cria uma tabela de listagem com os seguintes parâmetros passados
 		/*
 		 * $campos = array(
@@ -197,7 +186,7 @@
 							$conteudos .= "<td>".utf8_decode($dados[$campos[$i][2]])."</td>";
 							break;
 						case 'imagem': 
-							$conteudos .= "<td><a href='".base_url()."/assets/img/".$controller."/".utf8_encode($dados[$campos[$i][2]])."' target='_blank'><img src='".base_url()."/assets/img/".$controller."/".utf8_encode($dados[$campos[$i][2]])."' alt=''></td>";
+							$conteudos .= "<td><a href='".base_url()."/assets/img/".$controller."/".$dados[$campos[$i][2]]."' target='_blank'><img src='".base_url()."/assets/img/".$controller."/thumb/".$dados[$campos[$i][2]]."' alt=''></td>";
 							break;
 					}
 				}
@@ -254,7 +243,7 @@
 	// $funcaoDestsino = "função no controller q é o actionn do formulário(geralmente insert ou update), tendo por padrao insert";
 	// $id = parâmetro contendo o Id caso a funçao seja update
 	function painelCampos($campos, $controller, $funcaoDestino, $id = 0, $tabela = ''){
-		$saida = "<form role='form' method='post' action=".base_url().$controller."/".$funcaoDestino.">";
+		$saida = "<div class='col-lg-12'><form role='form' method='post' action=".base_url().$controller."/".$funcaoDestino." enctype='multipart/form-data'>";
 		$campo = ""; 
 		for($i = 0; $i < sizeof($campos); $i++){
 			if($id != 0){
@@ -264,6 +253,9 @@
 			switch ($campos[$i][0]) {
 				case 'text':
 					$campo = "<input type='".$campos[$i][0]."' class='form-control' name='".$campos[$i][2]."' ".$campos[$i][3]." value='".@$dados[$campos[$i][2]]."' />";
+					break;
+				case 'file':
+					$campo = "<input type='".$campos[$i][0]."' class='form-control' name='".$campos[$i][2]."' ".$campos[$i][3]." />";
 					break;
 				
 				default:
@@ -282,6 +274,7 @@
 		$saida .= "<input type='submit' class='btn btn-success' value='Enviar' />
 				   <input type='button' class='btn btn-default btn-cancelar' onclick='window.location = \"".base_url().$controller."\"' value='Cancelar' />
 			   </form>
+			   </div>
 					";
 		return utf8_encode($saida);
 	}
