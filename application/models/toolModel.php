@@ -66,6 +66,28 @@
 			}
 		}
 		
+		//muda status(se tiver ativo fica inativo e vice versa)
+		function changeFlag($tabela, $id){
+			$this->load->library('session');
+			try {
+				$registro = $this->Toolmodel->find($tabela, $id);
+				//$dados = array();
+				$dados['flag_status'] = false;
+				$alteracao = "desativado";
+				if($registro[0]->flag_status == false){
+					$dados['flag_status'] = true;
+					$alteracao = "ativado";
+				}
+				$this->db->where('id', $id);
+				$this->db->update($tabela, $dados);
+				$this->session->set_flashdata('messageType', 'success');
+				$this->session->set_flashdata('messageText', utf8_encode("Registro $alteracao com sucesso"));
+			} catch (Exception $e) {
+				$this->session->set_flashdata('messageType', 'danger');
+				$this->session->set_flashdata('messageText', "Erro: ".$e->getMessage());
+			}		
+		}
+		
 		//recebe um array com as configurações da miniatura a ser criada e cria a miniatura
 		//ver documentação da classe de manipulação de imagens codeigniter 'http://ellislab.com/codeigniter/user-guide/libraries/image_lib.html'
 		function criarThumb($configThumb){
@@ -152,19 +174,19 @@
 							$conteudos .= "<a class='glyphicon glyphicon-pencil' href='".base_url().$controller."/editar/".$dados['Id']."'></a>&nbsp;";
 							break;
 						case 2: 
-							$conteudos .= "<a class='glyphicon glyphicon-remove' href='".base_url().$controller."/delete/".$dados['Id']."'></a>&nbsp;";
+							$conteudos .= "<a class='glyphicon glyphicon-remove remover-registro' data-link='".base_url().$controller."/delete/".$dados['Id']."' data-toggle='modal' data-target='.modal-delete'></a>&nbsp;";
 							break;
 						case 3: 
 							if(isset($dados['flag_status'])){
 								if($dados['flag_status'] == false){
-									$conteudos .= "<a class='glyphicon glyphicon-plus-sign' href='".base_url().$controller."/flag/".$dados['Id']."'></a>&nbsp;";
+									$conteudos .= "<a class='glyphicon glyphicon-plus-sign' href='".base_url().$controller."/mudarFlag/".$dados['Id']."'></a>&nbsp;";
 								}else{
-									$conteudos .= "<a class='glyphicon glyphicon-minus-sign' href='".base_url().$controller."/flag/".$dados['Id']."'></a>&nbsp;";
+									$conteudos .= "<a class='glyphicon glyphicon-minus-sign' href='".base_url().$controller."/mudarFlag/".$dados['Id']."'></a>&nbsp;";
 								}
 							}
 							break;
 						case 4: 
-							$conteudos .= "<a class='glyphicon glyphicon-zoom-in' href='".base_url()."/".$controller."/visualizar/".$dados['Id']."'></a>&nbsp;";
+							$conteudos .= "<a class='glyphicon glyphicon-zoom-in' href='".base_url()."/".$controller."/visualizar/".$dados['Id']."/'></a>&nbsp;";
 							break;
 					}						
 				}
@@ -198,7 +220,26 @@
                 </tbody>
               </table>
             </div>
-          </div>';
+          </div>
+
+					<div class="modal fade modal-delete in" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="false">
+			    <div class="modal-dialog modal-sm">
+			      <div class="modal-content">
+			
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			          <h4 class="modal-title" id="mySmallModalLabel">Confirmação de Exclusão</h4>
+			        </div>
+			        <div class="modal-body">
+			          Tem certeza que deseja excluir este registro?
+			          <br><br>
+			          <div class="text-center">
+			          	<button class="btn btn-danger btn-excluir-registro" data-delete="">Excluir</button>&nbsp;<button class="btn btn-default" data-dismiss="modal"">Cancelar</button>
+			          </div>
+			        </div>
+			      </div><!-- /.modal-content -->
+			    </div><!-- /.modal-dialog -->
+			  </div>';
 			
 			return utf8_encode($saida);
 		}
@@ -239,7 +280,7 @@
 			";
 		}
 		$saida .= "<input type='submit' class='btn btn-success' value='Enviar' />
-				   <input type='button' class='btn btn-default' value='Cancelar' />
+				   <input type='button' class='btn btn-default btn-cancelar' onclick='window.location = \"".base_url().$controller."\"' value='Cancelar' />
 			   </form>
 					";
 		return utf8_encode($saida);

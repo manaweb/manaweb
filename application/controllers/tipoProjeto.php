@@ -4,7 +4,11 @@
 		//carrega view index mostrando todos os tipoProjetos cadastrados
 		function index(){
 			$this->load->library('session');
-			$data['message'] = '<div class="alert alert-'.$this->session->flashdata('messageType').'">'.$this->session->flashdata('messageText').'</div>';
+			$mensagem = " hidden";
+			if($this->session->flashdata('messageType') != null){
+				$mensagem = $this->session->flashdata('messageType');
+			}
+			$data['message'] = '<div class="alert alert-'.$mensagem.'">'.$this->session->flashdata('messageText').'</div>';
 			$data['base_url'] = base_url();
 		    $data['contentPage'] = "painel/tipoProjeto/index";
 		    $data['pageTitle'] = "Tipos de Projeto";
@@ -18,6 +22,7 @@
 			);
 			$acoes = array(1,2, 3, 4);
 			$data['lista'] = $this->Toolmodel->painelListar($campos, $query, $acoes, 'tipoProjeto');
+			//$this->output->cache(5);
 			$this->parser->parse('shared/index',$data);
 		}
 		
@@ -35,6 +40,7 @@
 				array('text', 'Nome', 'txtNome', 'placeholder="Nome do Tipo de projeto" required', 'Comentario de teste'),
 			);
 			$data['campos'] = $this->Toolmodel->painelCampos($campos, 'tipoProjeto', 'insert', '');
+			
 			$this->parser->parse('shared/index', $data);
 		}
 		
@@ -54,7 +60,7 @@
 			$data['campos'] = $this->Toolmodel->painelCampos($campos, 'tipoProjeto', 'update', $id, 'tipoProjeto');
 			$this->parser->parse('shared/index', $data);
 			
-			$b['tipoProjeto'] = $this->Toolmodel->find('tipoProjeto', $id);
+			$b['tipoProjeto'] = $this->Toolmodel->find('tipoprojeto', $id);
 			$this->parser->parse('painel/tipoProjeto/cadastrar',$b);
 		}
 		
@@ -64,7 +70,6 @@
 				'txtNome' => $this->input->post('txtNome')
 			);
 			$this->Toolmodel->inserir('tipoProjeto', $dadosInserir);
-			
 			redirect("tipoProjeto/index");
 		}
 		
@@ -82,6 +87,11 @@
 		function delete($id){
 			$this->Toolmodel->excluir('tipoProjeto', $id);
 			redirect("tipoProjeto/index/");
+		}
+		
+		function mudarFlag($id){
+			$this->Toolmodel->changeFlag('tipoprojeto', $id);
+			redirect("tipoProjeto/index/");			
 		}
 		
 	}//end controller tipoProjeto

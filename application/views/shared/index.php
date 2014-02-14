@@ -14,8 +14,6 @@
     <!-- Add custom CSS here -->
     <link href="{base_url}/assets/css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" href="{base_url}/assets/font-awesome/css/font-awesome.min.css">
-    
-    <script src="{base_url}/assets/js/jquery-1.10.2.js"></script>
   </head>
 
   <body>
@@ -132,11 +130,15 @@
           </div>
         </div><!-- /.row -->
 				<div class="row">
-					{message}
+					<div class="col-lg-12">
+						{message}
+					</div>
 				</div>
 	
-				<div class="sectio conteudo">
+				<div class="section conteudo">
+					<div class="row">
 						<?php $this->load->view($contentPage) ?>
+					</div>
 				</div> 
         
         
@@ -146,11 +148,23 @@
     </div><!-- /#wrapper -->
 
     <!-- JavaScript -->
+    <script src="{base_url}/assets/js/jquery-1.10.2.js"></script>
     <script src="{base_url}/assets/js/bootstrap.js"></script>
 
     <!-- Page Specific Plugins -->
     <script src="{base_url}/assets/js/tablesorter/jquery.tablesorter.js"></script>
     <script src="{base_url}/assets/js/tablesorter/tables.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".remover-registro").click(function(){
+					var link = $(this).attr("data-link"); 
+					$(".btn-excluir-registro").attr("data-delete", link);
+				});
 
+				$(".btn-excluir-registro").click(function(){
+					window.location = $(this).attr("data-delete");
+				});
+			});
+		</script>
   </body>
 </html>
