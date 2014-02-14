@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-    <meta charset="iso-8859-1">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -131,7 +131,9 @@
             </ol>
           </div>
         </div><!-- /.row -->
-
+				<div class="row">
+					{message}
+				</div>
 	
 				<div class="sectio conteudo">
 						<?php $this->load->view($contentPage) ?>

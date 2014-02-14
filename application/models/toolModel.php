@@ -33,21 +33,21 @@
 				$this->session->set_flashdata('messageType', 'success');
 				$this->session->set_flashdata('messageText', 'Cadastrado realizado com sucesso');
 			} catch (Exception $e) {
-				$this->session->set_flashdata('messageType', 'error');
+				$this->session->set_flashdata('messageType', 'danger');
 				$this->session->set_flashdata('messageText', "Erro: ".$e->getMessage());
 			}
 		}
 		
 		//recebe um array com os dados a serem atualizados no banco de acordo tabela especificada
-		function alterar($dados, $tabela){
+		function alterar($tabela, $dados){
 			$this->load->library('session');
 			try {
 				$this->db->where('id', $dados['id']);
 				$this->db->update($tabela, $dados);
 				$this->session->set_flashdata('messageType', 'success');
-				$this->session->set_flashdata('messageText', "Alteração realizada com sucesso");
+				$this->session->set_flashdata('messageText', utf8_encode("Alteração realizada com sucesso"));
 			} catch (Exception $e) {
-				$this->session->set_flashdata('messageType', 'error');
+				$this->session->set_flashdata('messageType', 'danger');
 				$this->session->set_flashdata('messageText', "Erro: ".$e->getMessage());
 			}		
 		}
@@ -59,9 +59,9 @@
 				$this->db->where('id',$id);
 				$this->db->delete($tabela);
 				$this->session->set_flashdata('messageType', 'success');
-				$this->session->set_flashdata('messageText', "Exclusão realizada com sucesso");
+				$this->session->set_flashdata('messageText', utf8_encode("Exclusão realizada com sucesso"));
 			} catch (Exception $e) {
-				$this->session->set_flashdata('messageType', 'error');
+				$this->session->set_flashdata('messageType', 'danger');
 				$this->session->set_flashdata('messageText', "Erro: ".$e->getMessage());
 			}
 		}
@@ -88,8 +88,8 @@
 		    }
 		    else{
 		    	$this->load->library('session');
-		      	$this->session->set_flashdata('messageType', 'error');
-				$this->session->set_flashdata('messageText', "Usuário ou senha incorretos");
+		      	$this->session->set_flashdata('messageType', 'danger');
+				$this->session->set_flashdata('messageText', utf8_encode("Usuário ou senha incorretos"));
 				return false;
 		    }
 		}
@@ -149,16 +149,22 @@
 				for($i = 0; $i < sizeof($acoes); $i++){
 					switch($acoes[$i]){
 						case 1: 
-							$conteudos .= "<a class='glyphicon glyphicon-pencil' href='".base_url()."/".$controller."/edit/".$dados['Id']."'></a>";
+							$conteudos .= "<a class='glyphicon glyphicon-pencil' href='".base_url().$controller."/editar/".$dados['Id']."'></a>&nbsp;";
 							break;
 						case 2: 
-							$conteudos .= "<a class='glyphicon glyphicon-remove' href='".base_url()."/".$controller."/delete/".$dados['Id']."'></a>";
+							$conteudos .= "<a class='glyphicon glyphicon-remove' href='".base_url().$controller."/delete/".$dados['Id']."'></a>&nbsp;";
 							break;
 						case 3: 
-							$conteudos .= "";
+							if(isset($dados['flag_status'])){
+								if($dados['flag_status'] == false){
+									$conteudos .= "<a class='glyphicon glyphicon-plus-sign' href='".base_url().$controller."/flag/".$dados['Id']."'></a>&nbsp;";
+								}else{
+									$conteudos .= "<a class='glyphicon glyphicon-minus-sign' href='".base_url().$controller."/flag/".$dados['Id']."'></a>&nbsp;";
+								}
+							}
 							break;
-						case 2: 
-							$conteudos .= "<a class='glyphicon glyphicon-zoom-in' href='".base_url()."/".$controller."/visualizar/".$dados['Id']."'></a>";
+						case 4: 
+							$conteudos .= "<a class='glyphicon glyphicon-zoom-in' href='".base_url()."/".$controller."/visualizar/".$dados['Id']."'></a>&nbsp;";
 							break;
 					}						
 				}
@@ -179,6 +185,7 @@
 			
 			$saida = '
 				<div class="col-lg-12">
+						<a href="'.base_url().$controller.'/cadastrar" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Adicionar novo registro</a><br /><br />
             <div class="table-responsive">
               <table class="table table-bordered table-hover table-striped tablesorter">
                 <thead>
@@ -193,7 +200,7 @@
             </div>
           </div>';
 			
-			return $saida;
+			return utf8_encode($saida);
 		}
 		
 
@@ -205,13 +212,17 @@
 	// $controller = "controller q está chamando a função";
 	// $funcaoDestsino = "função no controller q é o actionn do formulário(geralmente insert ou update), tendo por padrao insert";
 	// $id = parâmetro contendo o Id caso a funçao seja update
-	function painelCampos($campos, $controller, $funcaoDestino, $id = 0){
-		$saida = "<form role='form' method='post' action=".base_url()."painel/".$controller."/".$funcaoDestino.">";
+	function painelCampos($campos, $controller, $funcaoDestino, $id = 0, $tabela = ''){
+		$saida = "<form role='form' method='post' action=".base_url().$controller."/".$funcaoDestino.">";
 		$campo = ""; 
 		for($i = 0; $i < sizeof($campos); $i++){
+			if($id != 0){
+				$dados = mysql_fetch_assoc(mysql_query("select * from ".$tabela." where id = $id"));
+				$saida .= "<input type='hidden' name='Id' value='$id' />";
+			}
 			switch ($campos[$i][0]) {
 				case 'text':
-					$campo = "<input type='".$campos[$i][0]."' class='form-control' name='".$campos[$i][2]."' ".$campos[$i][3].">";
+					$campo = "<input type='".$campos[$i][0]."' class='form-control' name='".$campos[$i][2]."' ".$campos[$i][3]." value='".@$dados[$campos[$i][2]]."' />";
 					break;
 				
 				default:
@@ -231,7 +242,7 @@
 				   <input type='button' class='btn btn-default' value='Cancelar' />
 			   </form>
 					";
-		return $saida;
+		return utf8_encode($saida);
 	}
 }
 	
