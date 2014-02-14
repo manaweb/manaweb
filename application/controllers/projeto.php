@@ -4,10 +4,25 @@
 		//carrega view index mostrando todos os projetos cadastrados
 		function index(){
 			$this->load->library('session');
-			$data['projetos'] = $this->Toolmodel->getAllEntries('projeto');
 			$data['messageText'] = $this->session->flashdata('messageText');
 			$data['messageType'] = $this->session->flashdata('messageType');
-			$this->parser->parse('painel/projeto/index',$data); 
+			$data['base_url'] = base_url();
+		    $data['contentPage'] = "painel/projeto/index";
+		    $data['pageTitle'] = "Banners";
+		    $data['itens'] = array(
+								array("nome" => 'Listagens'),
+								array("nome" => 'Projeto')
+							);
+			$query = "select p.*, tp.txtNome from projeto p, tipoprojeto tp where p.idTipoProjeto = tp.Id";
+			$campos = array(
+				array('texto', 'Texto', 'txtText'),
+				array('texto', 'Destino', 'txtDest'),
+				array('imagem', 'Imagem', 'txtImag'),
+				array('texto', 'Tipo de Projeto', 'txtNome'),
+			);
+			$acoes = array(1,2);
+			$data['lista'] = $this->Toolmodel->listarTodos($campos, $query, $acoes, 'projeto');
+			$this->parser->parse('shared/index',$data); 
 		}
 		
 		//carregar view cadastrar

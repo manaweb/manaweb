@@ -4,24 +4,23 @@
 		//carrega view index mostrando todos os banners cadastrados
 		function index(){
 			$this->load->library('session');
-			$data['banners'] = $this->Toolmodel->getAllEntries('banner');
 			$data['messageText'] = $this->session->flashdata('messageText');
 			$data['messageType'] = $this->session->flashdata('messageType');
 			$data['base_url'] = base_url();
-	    $data['contentPage'] = "painel/banner/index";
-	    $data['pageTitle'] = "Banners";
-	    $data['itens'] = array(
-	    									array("nome" => 'Listagens'),
-	    									array("nome" => 'Banner'));
+		    $data['contentPage'] = "painel/banner/index";
+		    $data['pageTitle'] = "Banners";
+		    $data['itens'] = array(
+								array("nome" => 'Listagens'),
+								array("nome" => 'Banner')
+							);
 			$query = "select * from banner order by id";
 			$campos = array(
 				array('texto', 'Título', 'txtTitu'),
 				array('texto', 'Destino', 'txtDest'),
 				array('imagem', 'Imagem', 'txtImag'),
-				array('texto', 'Negão', 'txtImag'),
 			);
 			$acoes = array(1,2);
-			$data['lista'] = $this->Toolmodel->listarTodos($campos, $query, $acoes, 'banner');
+			$data['lista'] = $this->Toolmodel->painelListar($campos, $query, $acoes, 'banner');
 			$this->parser->parse('shared/index',$data); 
 		}
 		

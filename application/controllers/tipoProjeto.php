@@ -4,15 +4,38 @@
 		//carrega view index mostrando todos os tipoProjetos cadastrados
 		function index(){
 			$this->load->library('session');
-			$data['tipoProjetos'] = $this->Toolmodel->getAllEntries('tipoProjeto');
 			$data['messageText'] = $this->session->flashdata('messageText');
 			$data['messageType'] = $this->session->flashdata('messageType');
-			$this->parser->parse('tipoProjeto/index',$data); 
+			$data['base_url'] = base_url();
+		    $data['contentPage'] = "painel/tipoProjeto/index";
+		    $data['pageTitle'] = "Tipos de Projeto";
+		    $data['itens'] = array(
+								array("nome" => 'Listagens'),
+								array("nome" => 'Tipos de Projeto')
+							);
+			$query = "select * from tipoProjeto order by id desc";
+			$campos = array(
+				array('texto', 'Tipo de Projeto', 'txtNome'),
+			);
+			$acoes = array(1,2);
+			$data['lista'] = $this->Toolmodel->painelListar($campos, $query, $acoes, 'tipoProjeto');
+			$this->parser->parse('shared/index',$data);
 		}
 		
 		//carregar view cadastrar
 		function cadastrar(){
-			$this->load->view('painel/tipoProjeto/cadastrar');
+			$data['itens'] = array(
+								array("nome" => 'Cadastros'),
+								array("nome" => 'Tipos de Projeto')
+							);
+			$data['base_url'] = base_url();
+		    $data['contentPage'] = "painel/tipoProjeto/cadastrar";
+		    $data['pageTitle'] = "Cadastrar Tipo de Projeto";
+			$campos = array(
+				array('text', 'Nome', 'txtNome', 'placeholder="Nome do Tipo de projeto" required', 'Comentario de teste'),
+			);
+			$data['campos'] = $this->Toolmodel->painelCampos($campos, 'tipoProjeto', 'insert', '');
+			$this->parser->parse('shared/index', $data);
 		}
 		
 		//carregar view cadastrar com campos preenchidos para edição
@@ -47,4 +70,4 @@
 			redirect("tipoProjeto/index/");
 		}
 		
-	}//end controller Banner
+	}//end controller tipoProjeto

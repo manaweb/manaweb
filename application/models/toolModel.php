@@ -111,17 +111,17 @@
 			return $this->email->send();
 		}
 		
-		//cria uma tabela de listagem com os campos passados
+		//cria uma tabela de listagem com os seguintes parâmetros passados
 		/*
 		 * $campos = array(
 		 * 	array($tipo, $titulo, $campoNaTabela)
 		 * )
+		 * Onde:
+		 *     $tipo = 'texto' || 'imagem'
+		 *     $titulo = 'string q será o cabeçalho da coluna'
+		 *     $campoNaTabela = 'nome do campo no banco de dados'
 		 * 
-		 * $tipo = 'texto' || 'imagem'
-		 * $titulo = 'string q será o cabeçalho da coluna'
-		 * $campoNaTabela = 'nome do campo no banco de dados'
-		 * 
-		 * $acoes = array(x, y);
+		 * $acoes = array(x, y, ... , n);
 		 * 	1 = Editar
 		 * 	2 = Excluir
 		 * 	3 = Desativar
@@ -129,8 +129,10 @@
 		 * 
 		 * $query = 'comando sql desejado'
 		 * 
+		 *
+		 *$controller = 'controller que está chamando a função'		 
 		 * */
-		function listarTodos($campos, $query, $acoes, $controller){
+		function painelListar($campos, $query, $acoes, $controller){
 			$q = $this->db->query($query);
 			$topos = "<th>Ações</th>";
 			$conteudos = "<tr>";
@@ -147,23 +149,27 @@
 				for($i = 0; $i < sizeof($acoes); $i++){
 					switch($acoes[$i]){
 						case 1: 
-							$conteudos .= "<a href='".base_url()."/".$controller."/edit/".$dados['Id']."'></a>";
+							$conteudos .= "<a class='glyphicon glyphicon-pencil' href='".base_url()."/".$controller."/edit/".$dados['Id']."'></a>";
+							break;
 						case 2: 
-							$conteudos .= "<a href='".base_url()."/".$controller."/delete/".$dados['Id']."'></a>";
+							$conteudos .= "<a class='glyphicon glyphicon-remove' href='".base_url()."/".$controller."/delete/".$dados['Id']."'></a>";
+							break;
 						case 3: 
 							$conteudos .= "";
+							break;
 						case 2: 
-							$conteudos .= "<a href='".base_url()."/".$controller."/visualizar/".$dados['Id']."'></a>";
+							$conteudos .= "<a class='glyphicon glyphicon-zoom-in' href='".base_url()."/".$controller."/visualizar/".$dados['Id']."'></a>";
+							break;
 					}						
 				}
 				$conteudos .= "</td>";
 				for($i = 0; $i < sizeof($campos); $i++){
 					switch($campos[$i][0]){
 						case 'texto': 
-							$conteudos .= "<td>".$dados[$campos[$i][2]]."</td>";
+							$conteudos .= "<td>".utf8_decode($dados[$campos[$i][2]])."</td>";
 							break;
 						case 'imagem': 
-							$conteudos .= "<td><a href='".base_url()."/assets/img/".$controller."/".$dados[$campos[$i][2]]."' target='_blank'><img src='".base_url()."/assets/img/".$controller."/".$dados[$campos[$i][2]]."' alt=''></td>";
+							$conteudos .= "<td><a href='".base_url()."/assets/img/".$controller."/".utf8_encode($dados[$campos[$i][2]])."' target='_blank'><img src='".base_url()."/assets/img/".$controller."/".utf8_encode($dados[$campos[$i][2]])."' alt=''></td>";
 							break;
 					}
 				}
@@ -192,7 +198,42 @@
 		
 
 
+	
+	// array('text', 'Nome', 'txtNome', 'placeholder="asdasdasd" required', 'comentarios1');
+	//função para criar campos de um formulário de acordo com os parâmetros passados
+	// $campos = array('tipo', 'nomeNaLabel', 'nameDoInput', 'atributosAdicionais', 'comentarios sobre o campo');
+	// $controller = "controller q está chamando a função";
+	// $funcaoDestsino = "função no controller q é o actionn do formulário(geralmente insert ou update), tendo por padrao insert";
+	// $id = parâmetro contendo o Id caso a funçao seja update
+	function painelCampos($campos, $controller, $funcaoDestino, $id = 0){
+		$saida = "<form role='form' method='post' action=".base_url()."painel/".$controller."/".$funcaoDestino.">";
+		$campo = ""; 
+		for($i = 0; $i < sizeof($campos); $i++){
+			switch ($campos[$i][0]) {
+				case 'text':
+					$campo = "<input type='".$campos[$i][0]."' class='form-control' name='".$campos[$i][2]."' ".$campos[$i][3].">";
+					break;
+				
+				default:
+					# code...
+					break;
+			}
+			$comentario = $campos[$i][4] == "" ? "" :  "<p class='help-block'>".$campos[$i][4]."</p>"; 
+			$saida .= "
+				<div class='form-group'>
+                	<label>".$campos[$i][1]."</label>
+                	".$campo."
+                	".$comentario."
+              	</div>
+			";
+		}
+		$saida .= "<input type='submit' class='btn btn-success' value='Enviar' />
+				   <input type='button' class='btn btn-default' value='Cancelar' />
+			   </form>
+					";
+		return $saida;
 	}
+}
 	
 	
 	//function by Wesley Ferreira dos Santos para inserir no banco, passando como parametros 
