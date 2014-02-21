@@ -6,11 +6,11 @@
 			$data['projetos'] = $this->Toolmodel->getAllEntries('projeto');
 			$data['tecnologias'] = $this->Toolmodel->getAllEntries('tecnologia');
 			$this->db->select('*');
-	    $this->db->from('banner');
-	    //$this->db->where('id', '5');
-	    //$this->db->limit(1);
-	    $data['banners'] = $this->db->get()->result();
-	    $data['base_url'] = base_url();
+		    $this->db->from('banner');
+		    //$this->db->where('id', '5');
+		    //$this->db->limit(1);
+		    $data['banners'] = $this->db->get()->result();
+		    $data['base_url'] = base_url();
 			$this->parser->parse('home/index',$data);
 		}
 		

@@ -196,7 +196,7 @@
 			
 			$saida = '
 				<div class="col-lg-12">
-						<a href="'.base_url().$controller.'/cadastrar" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Adicionar novo registro</a><br /><br />
+						<a href="'.base_url().'painel/'.$controller.'/cadastrar" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Adicionar novo registro</a><br /><br />
             <div class="table-responsive">
               <table class="table table-bordered table-hover table-striped tablesorter">
                 <thead>

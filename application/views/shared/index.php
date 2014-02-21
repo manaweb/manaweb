@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Tables - SB Admin</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{base_url}/assets/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Add custom CSS here -->
-    <link href="{base_url}/assets/css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" href="{base_url}/assets/font-awesome/css/font-awesome.min.css">
-  </head>
+  <?php $this->load->view('shared/header'); ?>
 
   <body>
 
@@ -30,14 +16,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">SB Admin</a>
+          <a class="navbar-brand" href="{base_url}painel/">Man&aacute; WEB</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav side-nav">
-            <li><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li><a href="charts.html"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
+            <li><a href="{base_url}painel"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+            <!--<li><a href="charts.html"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
             <li class="active"><a href="tables.html"><i class="fa fa-table"></i> Tables</a></li>
             <li><a href="forms.html"><i class="fa fa-edit"></i> Forms</a></li>
             <li><a href="typography.html"><i class="fa fa-font"></i> Typography</a></li>
@@ -52,7 +38,7 @@
                 <li><a href="#">Third Item</a></li>
                 <li><a href="#">Last Item</a></li>
               </ul>
-            </li>
+            </li>-->
           </ul>
 
           <ul class="nav navbar-nav navbar-right navbar-user">
@@ -124,7 +110,7 @@
             <h1>{pageTitle}</h1>
             <ol class="breadcrumb">
             	{itens}
-              <li><a href="{base_url}{url}"><i class="glyphicon {icone}"></i> {nome}</a></li>
+              		<li><a href="{base_url}{url}"><i class="glyphicon {icone}"></i> {nome}</a></li>
               {/itens}
             </ol>
           </div>
@@ -147,13 +133,11 @@
 
     </div><!-- /#wrapper -->
 
-    <!-- JavaScript -->
-    <script src="{base_url}/assets/js/jquery-1.10.2.js"></script>
-    <script src="{base_url}/assets/js/bootstrap.js"></script>
+    <?php $this->load->view('shared/footer'); ?>
 
     <!-- Page Specific Plugins -->
-    <script src="{base_url}/assets/js/tablesorter/jquery.tablesorter.js"></script>
-    <script src="{base_url}/assets/js/tablesorter/tables.js"></script>
+    <script src="{base_url}assets/js/tablesorter/jquery.tablesorter.js"></script>
+    <script src="{base_url}assets/js/tablesorter/tables.js"></script>
 		<script type="text/javascript">
 			$(function(){
 				$(".remover-registro").click(function(){

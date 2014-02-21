@@ -13,7 +13,7 @@
 		    $data['contentPage'] = "painel/tipoProjeto/index";
 		    $data['pageTitle'] = "Tipos de Projeto";
 		    $data['itens'] = array(
-								array("nome" => 'Tipos de Projeto', 'icone' => 'glyphicon-asterisk', 'url' => "tipoprojeto"),
+								array("nome" => 'Tipos de Projeto', 'icone' => 'glyphicon-asterisk', 'url' => "painel/tipoprojeto"),
 							);
 			$query = "select * from tipoProjeto order by id desc";
 			$campos = array(
@@ -30,16 +30,16 @@
 		function cadastrar(){
 			$data['message'] = "";
 			$data['itens'] = array(
-								array("nome" => 'Tipos de Projeto', 'icone' => 'glyphicon-asterisk', 'url' => "tipoprojeto"),
-								array("nome" => 'Novo Tipo de Projeto', 'icone' => 'glyphicon-euro', 'url' => "tipoprojeto/cadastrar"),
+								array("nome" => 'Tipos de Projeto', 'icone' => 'glyphicon-asterisk', 'url' => "painel/tipoprojeto"),
+								array("nome" => 'Novo Tipo de Projeto', 'icone' => 'glyphicon-euro', 'url' => "painel/tipoprojeto/cadastrar"),
 							);
 			$data['base_url'] = base_url();
-	    $data['contentPage'] = "painel/tipoProjeto/cadastrar";
-	    $data['pageTitle'] = "Cadastrar Tipo de Projeto";
-			$campos = array(
-				array('text', 'Nome', 'txtNome', 'placeholder="Nome do Tipo de projeto" required', 'Comentario de teste'),
-				array('file', 'Arquivo Teste', 'upload', 'required', ''),
-			);
+		    $data['contentPage'] = "painel/tipoProjeto/cadastrar";
+		    $data['pageTitle'] = "Cadastrar Tipo de Projeto";
+				$campos = array(
+					array('text', 'Nome', 'txtNome', 'placeholder="Nome do Tipo de projeto" required', 'Comentario de teste'),
+					array('file', 'Arquivo Teste', 'upload', 'required', ''),
+				);
 			$data['campos'] = $this->Toolmodel->painelCampos($campos, 'tipoProjeto', 'insert', '');
 			
 			$this->parser->parse('shared/index', $data);
@@ -53,8 +53,8 @@
 								array("nome" => 'Tipos de Projeto')
 							);
 			$data['base_url'] = base_url();
-	    $data['contentPage'] = "painel/tipoProjeto/cadastrar";
-	    $data['pageTitle'] = "Editar Tipo de Projeto";
+	    	$data['contentPage'] = "painel/tipoProjeto/cadastrar";
+	    	$data['pageTitle'] = "Editar Tipo de Projeto";
 			$campos = array(
 				array('text', 'Nome', 'txtNome', 'placeholder="Nome do Tipo de projeto" required', 'Comentario de teste'),
 			);

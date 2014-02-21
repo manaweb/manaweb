@@ -5,8 +5,8 @@
 		function index() { 
 			//$this->Toolmodel->verificaLogado();
 			$data['base_url'] = base_url();
-	    $data['contentPage'] = "painel/index";
-	    $data['pageTitle'] = "Painel de Controle";	
+		    $data['contentPage'] = "painel/index";
+		    $data['pageTitle'] = "Painel de Controle";	
 			$this->parser->parse('shared/index', $data);
 		}
 		
@@ -19,7 +19,7 @@
 			$usuario = $this->post->input('txtLogin');
 			$senha = $this->post->input('txtSenha');
 			if(!$this->Toolmodel->login($usuario, $senha))
-				$this->load->view('/painel/index');	
+				$this->parser->parse('/painel/index');	
 			$this->redirect('painel/login');
  		}
 	} 
