@@ -1,0 +1,6 @@
+{
+    "require": {
+        "silex/silex": "~1.0",
+        "symfony/templating": "v2.0.23" 
+    }
+}
